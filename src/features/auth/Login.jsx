@@ -7,9 +7,8 @@ import { setCredentials } from "./authSlice.jsx";
 import { useLoginMutation } from "./authApiSlice.jsx";
 
 import usePersist from "../../hooks/usePersist.jsx";
-import useAuth from "../../hooks/useAuth.jsx";
+
 const Login = () => {
-  const { username: usernameIsSet } = useAuth();
   const userRef = useRef();
   const errRef = useRef();
   const [username, setUsername] = useState("");
@@ -29,11 +28,6 @@ const Login = () => {
   useEffect(() => {
     setErrMsg("");
   }, [username, password]);
-
-  useEffect(() => {
-    console.log(usernameIsSet);
-    usernameIsSet ? location.replace("/dash") : "";
-  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
